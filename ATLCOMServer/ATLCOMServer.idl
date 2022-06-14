@@ -1,0 +1,37 @@
+// ATLCOMServer.idl : IDL source for ATLCOMServer
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (ATLCOMServer.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(fc41df7f-f647-40e9-bd9e-98476a9cb3ec),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IMathServer : IDispatch
+{
+	[id(1)] HRESULT ComputePi([out, retval] DOUBLE* result);
+};
+[
+	uuid(68ca1398-e73d-4626-8035-de60dcf49799),
+	version(1.0),
+]
+library ATLCOMServerLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(4066a17c-c559-4a45-a02f-ae222bc3e50e)
+	]
+	coclass MathServer
+	{
+		[default] interface IMathServer;
+	};
+};
+
+import "shobjidl.idl";
