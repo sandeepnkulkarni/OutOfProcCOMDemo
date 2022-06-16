@@ -1,5 +1,4 @@
-# OutOfProcCOMDemo
-Out-of-process COM Demo
+# Out-of-process COM Demo
 
 Requires Visual Studio 2017
 
