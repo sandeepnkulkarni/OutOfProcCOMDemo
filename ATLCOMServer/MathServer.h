@@ -48,6 +48,12 @@ public:
 
 public:
 	STDMETHOD(ComputePi)(DOUBLE* result);
+	STDMETHOD(AddIntegers)(VARIANT varIntegers, INT* result);
+	STDMETHOD(get_Floats)(VARIANT* pVal);
+	STDMETHOD(put_Floats)(VARIANT newVal);
+
+private:
+	CComVariant m_varFloats;
 };
 
 OBJECT_ENTRY_AUTO(__uuidof(MathServer), CMathServer)

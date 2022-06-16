@@ -21,6 +21,19 @@ namespace ManagedClient
         /// Compute the value of the constant Pi.
         /// </summary>
         double ComputePi();
+        
+        int AddIntegers
+            (
+            [MarshalAs(UnmanagedType.Struct)]
+            object input
+            );
+        
+        [return: MarshalAs(UnmanagedType.Struct)]
+        object get_Floats();
+        
+        void put_Floats(
+            [MarshalAs(UnmanagedType.Struct)] object input
+            );
     }
 
     class Program
@@ -46,6 +59,22 @@ namespace ManagedClient
             var server = (IMathServer)obj;
             double pi = server.ComputePi();
             Console.WriteLine($"\u03C0 = {pi}");
+
+            int[] input = new int[] { 1, 2, 3, 4, 5 };
+            int result = server.AddIntegers(input);
+            Console.WriteLine($"Integer addition result = {result}");
+
+            float[] floatsInput = new float[] { 1.1f, 2.2f, 3.3f };
+            server.put_Floats(floatsInput);
+            Console.WriteLine($"put_Floats worked");
+
+            object floatsObj = server.get_Floats();
+            Console.WriteLine($"get_Floats result type = {floatsObj.GetType().IsArray}");
+            if (floatsObj is float[])
+            {
+                float[] floats = (float[])floatsObj;
+                Console.WriteLine($"get_Floats result = {string.Join(",", floats)}");
+            }
         }
 
         private class Ole32

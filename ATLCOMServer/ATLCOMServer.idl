@@ -17,6 +17,9 @@ import "ocidl.idl";
 interface IMathServer : IDispatch
 {
 	[id(1)] HRESULT ComputePi([out, retval] DOUBLE* result);
+	[id(2)] HRESULT AddIntegers([in] VARIANT varIntegers, [out, retval] INT* result);
+	[propget, id(3)] HRESULT Floats([out, retval] VARIANT* pVal);
+	[propput, id(3)] HRESULT Floats([in] VARIANT newVal);
 };
 [
 	uuid(68ca1398-e73d-4626-8035-de60dcf49799),
